@@ -62,6 +62,7 @@ if (!function_exists('comment_link_suggest_o_tron_add_content') ) {
 		$text['text'] = str_replace("%--", "<a href='$permalink#respond'>", $text['text']);
 		$text['text'] = str_replace("--%", "</a>", $text['text']); 
 		$stuff = '';
+		
 		if ($more) {
 			if ( $text['text'] != '' ) {
 
@@ -118,8 +119,8 @@ if ( !function_exists( 'comment_link_suggest_o_save' ) ) {
 // Set up the form
 if (!function_exists('comment_link_form') ) { 
 	function comment_link_form() {
-		$id = $_GET['post'];
-		$commentLink = get_post_meta( $id, '_comment_link_suggest_o_options', true );
+		global $post;
+		$commentLink = get_post_meta( $post->ID, '_comment_link_suggest_o_options', true );
 		if ( !isset($commentLink['text'] ) )
 			$commentLink['text'] = '';
 		if ( !isset($commentLink['bold'] ) )
