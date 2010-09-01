@@ -63,7 +63,7 @@ if (!function_exists('comment_link_suggest_o_tron_add_content') ) {
 		$text['text'] = str_replace("--%", "</a>", $text['text']); 
 		$stuff = '';
 		
-		if ($more) {
+		if ($more || strstr($content, 'more-link' ) === false) {
 			if ( $text['text'] != '' ) {
 
 				if (1 == $text['bold']) {
