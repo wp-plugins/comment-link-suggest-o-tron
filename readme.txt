@@ -53,6 +53,9 @@ The `Leave a comment` portion would then appear at the bottom of your post as a 
 
 == Changelog ==
 
+= 1.2.2 = 
+* Fixed an issue with the <!--more--> tag.
+
 = 1.2.0 = 
 * Further code revision
 
