@@ -63,14 +63,16 @@ if (!function_exists('comment_link_suggest_o_tron_add_content') ) {
 		$text['text'] = str_replace("--%", "</a>", $text['text']); 
 		$stuff = '';
 		if ($more) {
-			if (1 == $text['bold']) {
-				$text['text'] = "<strong>".$text['text']."</strong>";
-			}
-			if (1 == $text['italic']) {
-				$text['text'] = "<em>".$text['text']."</em>";
-			}
-			if ( $text['text'] != '' )
+			if ( $text['text'] != '' ) {
+
+				if (1 == $text['bold']) {
+					$text['text'] = "<strong>".$text['text']."</strong>";
+				}
+				if (1 == $text['italic']) {
+					$text['text'] = "<em>".$text['text']."</em>";
+				}
 				$stuff = "<p class='commentLinkPlugin'> ".$text['text']."</p>";
+			}
 		}	
 		$content = $content.stripslashes($stuff);
 		return $content;
