@@ -3,7 +3,7 @@
 Plugin Name: Comment Link Suggest-O-Tron
 Plugin URI: http://line-in.co.uk/plugins/comment-link-suggest-o-tron
 Description: Want more comments? You gots to ask the right questions...
-Version: 1.2.2
+Version: 1.2.3
 Author: Simon Fairbairn
 Author URI: http://line-in.co.uk
 */
@@ -75,7 +75,14 @@ if (!function_exists('comment_link_suggest_o_tron_add_content') ) {
 				$stuff = "<p class='commentLinkPlugin'> ".$text['text']."</p>";
 			}
 		}	
-		$content = $content.stripslashes($stuff);
+
+		if ( isset( $text['top'] ) && $text['top'] == 1 ) {
+			$content = stripslashes($stuff) . $content;
+		} else {
+			$content = $content . stripslashes($stuff) ;
+		}
+
+		
 		return $content;
 	}
 }
@@ -111,6 +118,13 @@ if ( !function_exists( 'comment_link_suggest_o_save' ) ) {
 			$comment_link['italic'] = 1;
 		else
 			$comment_link['italic'] = 0;
+
+		if ( isset( $_POST['comment_link_suggest_o_top'] ) ) 
+			$comment_link['top'] = 1;
+		else
+			$comment_link['top'] = 0;
+
+
 		update_post_meta($post_id, '_comment_link_suggest_o_options', $comment_link);
 	}
 }
@@ -127,6 +141,9 @@ if (!function_exists('comment_link_form') ) {
 			$commentLink['bold'] = 1;
 		if ( !isset($commentLink['italic'] ) )
 			$commentLink['italic'] = 1;
+		if ( !isset($commentLink['top'] ) )
+			$commentLink['top'] = 0;
+
 
 		// Use nonce for verification
 		echo '<input type="hidden" name="commment_text_noncename" id="comment_text_noncename" value="' . wp_create_nonce( plugin_basename(__FILE__) ) . '" />';
@@ -143,8 +160,13 @@ if (!function_exists('comment_link_form') ) {
 		if ($commentLink['italic'] == 1) {
 			echo " checked='checked' ";
 		}
+		echo '/> ';
+		echo ' <label for="comment_link_suggest_o_top">Show at top? </label><input type="checkbox" value="1" name="comment_link_suggest_o_top" id="comment_link_suggest_o_top" ';
+		if ($commentLink['top'] == 1) {
+			echo " checked='checked' ";
+		}
 
-		echo '/> | ';
+		echo '/><br />';
 		echo '<label for="comment_link_plugin_preset">Comment Text Presets: </label>';
 		echo "<noscript>Awww, no JavaScript! You're missing out on the best part!</noscript>";
 		echo '<span id="comment-link-suggest-o-ajax"></span></p>';

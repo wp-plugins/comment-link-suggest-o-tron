@@ -53,27 +53,30 @@ The `Leave a comment` portion would then appear at the bottom of your post as a 
 
 == Changelog ==
 
-= 1.2.2 = 
-* Fixed an issue with the <!--more--> tag.
+= 0.7.0 =
+* First release
 
-= 1.2.0 = 
-* Further code revision
+= 0.7.1 =
+* Fixed a bug that meant the field was being emptied if the user edited the post using the `quick edit` functionality
+
+= 0.7.2 =
+* Added a few more prompts
+* Code cleanup
+
+= 0.8.0 =
+* Selecting a drop down option now appends it to current text
+* Added the ability to save custom comment text
 
 = 1.1.0 =
 * major code revision - now uses Post Meta instead of creating a new DB
 * Addition of AJAX for managing the Suggestion Presets
 * Delete a suggestion added
 
-= 0.8.0 =
-* Selecting a drop down option now appends it to current text
-* Added the ability to save custom comment text
+= 1.2.0 = 
+* Further code revision
 
-= 0.7.2 =
-* Added a few more prompts
-* Code cleanup
+= 1.2.2 = 
+* Fixed an issue with the <!--more--> tag.
 
-= 0.7.1 =
-* Fixed a bug that meant the field was being emptied if the user edited the post using the `quick edit` functionality
-
-= 0.7.0 =
-* First release
+= 1.2.3 = 
+* Added ability to have Comment Link Text show at the top of the post.
