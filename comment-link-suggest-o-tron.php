@@ -3,7 +3,7 @@
 Plugin Name: Comment Link Suggest-O-Tron
 Plugin URI: http://line-in.co.uk/plugins/comment-link-suggest-o-tron
 Description: Want more comments? You gots to ask the right questions...
-Version: 1.2.3
+Version: 1.2.4
 Author: Simon Fairbairn
 Author URI: http://line-in.co.uk
 */

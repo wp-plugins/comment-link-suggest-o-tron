@@ -4,7 +4,7 @@ Donate link: http://line-in.co.uk/plugins/donate
 Tags: comments,custom links,meta box
 Requires at least: 2.8
 Tested up to: 3.0.1
-Stable tag: 1.2.3
+Stable tag: 1.2.4
 
 What if you could get more comments on your blog? 
 
@@ -80,3 +80,6 @@ The `Leave a comment` portion would then appear at the bottom of your post as a 
 
 = 1.2.3 = 
 * Added ability to have Comment Link Text show at the top of the post.
+
+= 1.2.4 = 
+* Added ability to choose between top and bottom
