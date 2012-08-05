@@ -4,7 +4,7 @@ Donate link: http://line-in.co.uk/plugins/donate
 Tags: comments,custom links,meta box
 Requires at least: 2.8
 Tested up to: 3.0.1
-Stable tag: 1.2.2
+Stable tag: 1.2.3
 
 What if you could get more comments on your blog? 
 
