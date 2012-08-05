@@ -58,7 +58,11 @@ if (!function_exists('comment_link_suggest_o_tron_add_content') ) {
 		$id = get_the_ID(); 
 		$permalink = get_permalink($id);
 		$text = get_post_meta( $id, '_comment_link_suggest_o_options', true );
-		
+		if ( !$text ) {
+			return $content;
+		}
+
+
 		$text['text'] = str_replace("%--", "<a href='$permalink#respond'>", $text['text']);
 		$text['text'] = str_replace("--%", "</a>", $text['text']); 
 		$stuff = '';
@@ -78,7 +82,9 @@ if (!function_exists('comment_link_suggest_o_tron_add_content') ) {
 
 		if ( isset( $text['top'] ) && $text['top'] == 1 ) {
 			$content = stripslashes($stuff) . $content;
-		} else {
+		} 
+
+		if ( !isset( $text['bottom'] ) || (isset( $text['bottom']) && $text['bottom'] == 1 ) ) {
 			$content = $content . stripslashes($stuff) ;
 		}
 
@@ -124,6 +130,11 @@ if ( !function_exists( 'comment_link_suggest_o_save' ) ) {
 		else
 			$comment_link['top'] = 0;
 
+		if ( isset( $_POST['comment_link_suggest_o_bottom'] ) ) 
+			$comment_link['bottom'] = 1;
+		else
+			$comment_link['bottom'] = 0;
+
 
 		update_post_meta($post_id, '_comment_link_suggest_o_options', $comment_link);
 	}
@@ -143,6 +154,9 @@ if (!function_exists('comment_link_form') ) {
 			$commentLink['italic'] = 1;
 		if ( !isset($commentLink['top'] ) )
 			$commentLink['top'] = 0;
+		if ( !isset($commentLink['bottom'] ) )
+			$commentLink['bottom'] = 1;
+
 
 
 		// Use nonce for verification
@@ -166,7 +180,14 @@ if (!function_exists('comment_link_form') ) {
 			echo " checked='checked' ";
 		}
 
+		echo '/> ';
+		echo ' <label for="comment_link_suggest_o_bottom">Show at bottom? </label><input type="checkbox" value="1" name="comment_link_suggest_o_bottom" id="comment_link_suggest_o_bottom" ';
+		if ($commentLink['bottom'] == 1) {
+			echo " checked='checked' ";
+		}
+
 		echo '/><br />';
+
 		echo '<label for="comment_link_plugin_preset">Comment Text Presets: </label>';
 		echo "<noscript>Awww, no JavaScript! You're missing out on the best part!</noscript>";
 		echo '<span id="comment-link-suggest-o-ajax"></span></p>';
